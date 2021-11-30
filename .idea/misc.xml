@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.14583333333333334" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_create_post.xml" value="0.28330206378986866" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_sigin.xml" value="0.25" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/fragment_home.xml" value="0.1398148148148148" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/post_row_item.xml" value="0.16" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
