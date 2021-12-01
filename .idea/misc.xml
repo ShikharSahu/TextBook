@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2734375" />
         <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_favorite_24.xml" value="0.2734375" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_home_24.xml" value="0.2734375" />
         <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.14583333333333334" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_liked_24.xml" value="0.14583333333333334" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_person_24.xml" value="0.2734375" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_search_24.xml" value="0.2734375" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/drawable/ic_unliked_24.xml" value="0.2734375" />
         <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_create_post.xml" value="0.28330206378986866" />
-        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_sigin.xml" value="0.25" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25729166666666664" />
         <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/fragment_home.xml" value="0.1398148148148148" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
         <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/layout/post_row_item.xml" value="0.16" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/menu/bottom_navigation_view_menu_items.xml" value="0.1" />
+        <entry key="..\:/code/AndroidProjects/SocialsApp/app/src/main/res/menu/main_activity_top_menu.xml" value="0.20833333333333334" />
       </map>
     </option>
   </component>

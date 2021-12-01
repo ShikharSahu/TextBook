@@ -7,6 +7,7 @@ class Utils {
         private const val MINUTE_MILLIS = 60 * SECOND_MILLIS
         private const val HOUR_MILLIS = 60 * MINUTE_MILLIS
         private const val DAY_MILLIS = 24 * HOUR_MILLIS
+//        private const val MONTH_MILLIS = 30 * DAY_MILLIS
 
         fun getTimeAgo(time: Long): String? {
             val now: Long = System.currentTimeMillis()

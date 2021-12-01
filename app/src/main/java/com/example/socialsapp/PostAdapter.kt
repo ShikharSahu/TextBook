@@ -1,5 +1,6 @@
 package com.example.socialsapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -20,11 +21,13 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, private val IOnClickF
     class PostViewHolder(val binding : PostRowItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+
         val postViewHolder = PostViewHolder(PostRowItemBinding
             .inflate(LayoutInflater.from(parent.context), parent, false))
         postViewHolder.binding.likeButton.setOnClickListener{
             IOnClickForPostAdapter.onLikeClicked(snapshots.getSnapshot(postViewHolder.adapterPosition).id)
         }
+
         return postViewHolder
     }
 
@@ -44,6 +47,7 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, private val IOnClickF
         else{
             holder.binding.userName.text = model.createdBy.displayName
         }
+        Log.d("mee","${model.text}")
 
         if(model.likedBy.contains(currentUserId)){
             holder.binding.likeButton.setImageDrawable(ContextCompat.getDrawable(holder.binding.likeButton.context, R.drawable.ic_liked_24))
@@ -60,10 +64,11 @@ class PostAdapter(options: FirestoreRecyclerOptions<Post>, private val IOnClickF
         oldIndex: Int
     ) {
 
+
         super.onChildChanged(type, snapshot, newIndex, oldIndex)
-        if(type == ChangeEventType.ADDED) {
-            IOnClickForPostAdapter.scrollToNew(newIndex)
-        }
+//        if(type == ChangeEventType.ADDED) {
+//            IOnClickForPostAdapter.scrollToNew(newIndex)
+//        }
 
 
     }

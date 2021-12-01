@@ -109,7 +109,7 @@ class SignInActivity : AppCompatActivity() {
             finish()
         } else {
             Log.d("mee","why")
-            Toast.makeText(this,"can't update ui",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"can't update ui",Toast.LENGTH_SHORT).show()
             binding.siSignInButton.visibility = View.VISIBLE
             binding.pbSignInBar.visibility = View.GONE
         }

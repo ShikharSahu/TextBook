@@ -3,72 +3,82 @@ package com.example.socialsapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.socialsapp.daos.PostDao
+import android.view.Menu
+import androidx.fragment.app.Fragment
 import com.example.socialsapp.databinding.ActivityMainBinding
-import com.example.socialsapp.models.Post
-import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.Query
-import androidx.recyclerview.widget.LinearSmoothScroller
-import androidx.recyclerview.widget.RecyclerView.SmoothScroller
+
+import android.view.MenuItem
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
-class MainActivity : AppCompatActivity(), IOnClickForPostAdapter {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: PostAdapter
-    private lateinit var postDao: PostDao
-    lateinit var smoothScroller: SmoothScroller
-
+    private val homeFragment = HomeFragment()
+    private val profileFragment = ProfileFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bottomNavigationView.background = null
+        binding.bottomNavigationView.menu.getItem(1).isEnabled = false
 
         binding.fabAddNote.setOnClickListener {
             val intent = Intent(this,CreatePost::class.java)
             startActivity(intent)
         }
 
-        //options - > need a query to sort the data from the db
-        postDao = PostDao()
-        val postCollection = postDao.postCollection
-        val query = postCollection.orderBy("createdAt", Query.Direction.DESCENDING)
+        setFragment(homeFragment)
 
-        val recyclerViewOptions = FirestoreRecyclerOptions.Builder<Post>().setQuery(query, Post::class.java).build()
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when (it.itemId){
+                R.id.mi_home -> setFragment(homeFragment)
+                R.id.mi_profile -> setFragment(profileFragment)
+            }
+            true
+        }
+    }
 
-        smoothScroller = object : LinearSmoothScroller(this) {
-            override fun getVerticalSnapPreference(): Int {
-                return SNAP_TO_START
+    private fun setFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(binding.mainActivityFrameLayout.id,
+            fragment).commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_activity_top_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.mi_sign_out -> {
+            MaterialAlertDialogBuilder(this,
+                R.style.MaterialAlertDialog_MaterialComponents_Title_Icon_CenterStacked)
+                .setMessage("Are you sure you want to sign out?")
+                .setPositiveButton("Yes") { dialog, which ->
+                    GlobalScope.launch {
+                        Firebase.auth.signOut()
+                        withContext(Dispatchers.Main){
+                            val signInIntent = Intent (baseContext, SignInActivity::class.java)
+                            startActivity(signInIntent)
+                            finish()
+                        }
+                    }
+
+                }
+                .setNegativeButton("No"){ _,_ -> }
+                .show()
             }
         }
-
-        adapter = PostAdapter(recyclerViewOptions, this)
-        binding.rvFbPosts.adapter = adapter
-        binding.rvFbPosts.layoutManager = LinearLayoutManager(this)
-
+        return true
     }
 
-    override fun onStart() {
-        super.onStart()
-        adapter.startListening()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        adapter.stopListening()
-    }
-
-    override fun onLikeClicked(postId: String) {
-        postDao.updateLikes(postId)
-    }
-
-    override fun scrollToNew(index: Int) {
-
-        smoothScroller.targetPosition = index
-        Toast.makeText(this,"add at pos:  $index", Toast.LENGTH_SHORT).show()
-        binding.rvFbPosts.layoutManager!!.startSmoothScroll(smoothScroller)
-    }
 }

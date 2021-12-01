@@ -28,6 +28,18 @@ class PostDao {
         }
     }
 
+    fun addPost(post : Post){
+        GlobalScope.launch {
+            postCollection.document().set(post)
+        }
+    }
+
+    fun deletePost(postId: String ){
+        GlobalScope.launch {
+            postCollection.document(postId).delete()
+        }
+    }
+
     fun updateLikes(postId : String){
         val currentUserId = auth.currentUser!!.uid
         GlobalScope.launch {
@@ -45,5 +57,10 @@ class PostDao {
     }
 
     fun getPostById(postId : String) : Task<DocumentSnapshot> = postCollection.document(postId).get()
+
+    fun isPostOfCurrentUser(post : Post) : Boolean {
+        val currentUserId = auth.currentUser!!.uid
+        return post.createdBy.uid == currentUserId
+    }
 
 }

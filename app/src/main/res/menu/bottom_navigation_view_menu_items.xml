@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_home"
+        android:icon="@drawable/ic_home_24"
+        android:title="home"
+        />
+
+    <item
+        android:id="@+id/mi_placeholder"
+        android:title=""
+        />
+
+    <item
+        android:id="@+id/mi_profile"
+        android:icon="@drawable/ic_person_24"
+        android:title="person"
+        />
+</menu>
